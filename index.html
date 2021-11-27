@@ -6565,7 +6565,7 @@ var moves = {
             hyp = 1;
         }
        
-        enFST.innerHTML = Math.floor(((((2 * +enBST.value + +enIV.value + (+enEV.value / 4)) * +level.value) / 65) + 80))* +hyp;
+        enFST.innerHTML = Math.floor(Math.floor(((((2 * +enBST.value + +enIV.value + (+enEV.value / 4)) * +level.value) / 65) + 80))* +hyp);
         
         //MATK
         if (posNature.value == "brawny" || negNature.value == "brawny") {
