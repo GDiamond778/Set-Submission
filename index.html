@@ -75,9 +75,6 @@
        #level {
            width: 35px;
        }
-       #oak {
-         margin:auto;
-       }
        #title {
                 background-color: rgb(129, 134, 143);
                 border: solid black;
@@ -122,7 +119,7 @@
    <fieldset>
     <table>
         <tr>
-             <select id="plsworkk" id="oak" class="monSelection" onchange="updateInfo('BST')">
+             <select id="monList" class="monSelection" onchange="updateInfo('BST')">
         
             </select>
         </tr>
@@ -6525,7 +6522,7 @@ var moves = {
 
 };
 
-        var list = document.getElementById("plsworkk");
+        var list = document.getElementById("monList");
 
         var hpEV = document.getElementById("hpEV");
         var enEV = document.getElementById("enEV");
