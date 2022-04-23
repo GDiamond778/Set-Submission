@@ -96,15 +96,24 @@
             width: 400px;
         }
         #notes {
-            width: 300px;
-            margin:auto;
+            width: 350px;
+            height: 100px;
+            margin:auto; 
+            top:0px;
+            resize: none;
         }
         fieldset {
             width: 400px;
             background-color: #f1f4f9;
-           text-align:left; 
+            text-align:left; 
         }
-        
+        .instructions { 
+            resize: none;
+            height: 300px;
+            width: 500px;
+            background-color: #f1f4f9;
+            position:absolute;
+        }
         .show {display:block;}
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -117,6 +126,7 @@
       <tr>
         <td align="right" style="vertical-align: top;">
    <fieldset>
+       
     <table>
         <tr>
              <select id="monList" class="monSelection" onchange="updateInfo('BST')">
@@ -126,6 +136,7 @@
         <tr>
             <td>Set Name</td>
             <td><input id="SetName" type="text" placeholder="Enter Set Name Here"></td>
+            <td><input type="button" value="RESET ALL VALUES" onclick="reset()"></td>
         </tr>
         <tr>
             <td>Type</td>
@@ -387,9 +398,18 @@
 </fieldset>
 </td>
 <td align="right" style="vertical-align: top;">
-  <textarea id="notes" >Set Notes \n EXPLAIN WHY THE SET IS THE WAY IT IS (LIKE WHAT THE SPEED IS FOR OR WHAT THE HP/ENERGY IS FOR) \n Example: 200 hp and mdef for maximum bulk and also for loomians Like boarrok,Himbrr, Tyrecks Etc.
-32 energy for 240 energy in lvl 50 matches And 68 r atk is leftover.
-v sluggish is to underspeed luminami can be also replaced with v frail. </textarea>
+  <textarea id="notes" >Set Notes (Delete this and put your notes in (Keep it concise)) </textarea>
+<textarea class="instructions"readonly>
+INSTRUCTIONS 
+These sets (if they're  standard sets) will be added directly into the official LL damage calc &#13;&#10;-----------------------------------------------------------------
+EXPLAIN WHY THE SET IS THE WAY IT IS (LIKE WHAT THE SPEED IS FOR OR WHAT THE HP/ENERGY IS FOR) &#13;&#10;Example: &#13;&#10;200 hp and mDef for maximum bulk and also for loomians Like Boarrok, Himbrr, Tyrecks etc, 32 energy for 240 energy in lvl 50 matches And 68 r atk is leftover. v sluggish is to underspeed Luminami can be also replaced with vFrail. 
+-----------------------------------------------------------------
+SET NAME FORMAT [Patch #] Set Name 
+For example: 
+[Patch 7] vRobust pivot Luminami 
+or even 
+[Patch 7] Smart Nimble Falkyrie
+</textarea>
 </td>
 </tr>
 </table>
@@ -7174,7 +7194,12 @@ var moves = {
         },60000);
         });
 
-        
+      function reset() {
+          document.getElementById("SetName").value = "";
+          document.getElementById("f1").reset();
+          document.getElementById("f2").reset();
+          updateInfo('BST');
+      }
       function updateInfo(word) {
         var chosenMon = list.options[list.selectedIndex].text.toLowerCase();
         var hpBST = document.getElementById("hpBase");
